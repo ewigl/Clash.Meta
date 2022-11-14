@@ -26,7 +26,7 @@ tun:
   auto-detect-interface: true
 
 sniffer:
-  enable: false
+  enable: true
   sniffing:
     - tls
     - http
@@ -61,12 +61,15 @@ dns:
     - "*.mcdn.bilivideo.cn"
   fake-ip-range: 28.0.0.1/8
   proxy-server-nameserver:
+    - https://114.114.114.114/dns-query
     - https://223.5.5.5/dns-query
     - https://1.12.12.12/dns-query
   default-nameserver:
+    - https://114.114.114.114/dns-query
     - https://223.5.5.5/dns-query
     - https://1.12.12.12/dns-query
   nameserver:
+    - https://114.114.114.114/dns-query
     - https://223.5.5.5/dns-query
     - https://1.12.12.12/dns-query
   fallback:
@@ -82,21 +85,21 @@ dns:
 proxy-providers:
   Licht:
     type: file
-    path: ./Licht.yaml
+    path: ./configs/Licht.yaml
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 600
   iKuuu:
     type: file
-    path: ./iKuuu.yaml
+    path: ./configs/iKuuu.yaml
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 600
 
 proxy-groups:
-  - name: PROXY
+  - name: 🚀
     type: select
     use:
       - Licht
@@ -188,6 +191,7 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
+# 黑名单模式，漏网之鱼代理
 rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
@@ -197,12 +201,25 @@ rules:
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,DIRECT
-  - RULE-SET,proxy,PROXY
+  - RULE-SET,proxy,🚀
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
-  - RULE-SET,telegramcidr,PROXY
-  - GEOIP,LAN,DIRECT,no-resolve
-  - GEOIP,PRIVATE,DIRECT,no-resolve
+  - RULE-SET,telegramcidr,🚀
+  - GEOIP,LAN,DIRECT
+  - GEOIP,PRIVATE,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+  - MATCH,🚀
+
+# 白名单模式，漏网之鱼直连
+# rules:
+#   - RULE-SET,applications,DIRECT
+#   - DOMAIN,clash.razord.top,DIRECT
+#   - DOMAIN,yacd.haishan.me,DIRECT
+#   - RULE-SET,private,DIRECT
+#   - RULE-SET,reject,REJECT
+#   - RULE-SET,tld-not-cn,PROXY
+#   - RULE-SET,gfw,PROXY
+#   - RULE-SET,greatfire,PROXY
+#   - RULE-SET,telegramcidr,PROXY
+#   - MATCH,DIRECT
