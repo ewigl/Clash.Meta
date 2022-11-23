@@ -219,7 +219,10 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,PRIVATE,DIRECT
   - GEOIP,CN,DIRECT
+  # SteamCN,DIRECT
+  - GEOSITE,steam@cn,DIRECT
   - MATCH,🚀
+
 # 白名单模式，漏网之鱼直连
 # rules:
 #   - RULE-SET,applications,DIRECT
@@ -227,8 +230,8 @@ rules:
 #   - DOMAIN,yacd.haishan.me,DIRECT
 #   - RULE-SET,private,DIRECT
 #   - RULE-SET,reject,REJECT
-#   - RULE-SET,tld-not-cn,PROXY
-#   - RULE-SET,gfw,PROXY
-#   - RULE-SET,greatfire,PROXY
-#   - RULE-SET,telegramcidr,PROXY
+#   - RULE-SET,tld-not-cn,🚀
+#   - RULE-SET,gfw,🚀
+#   - RULE-SET,greatfire,🚀
+#   - RULE-SET,telegramcidr,🚀
 #   - MATCH,DIRECT
