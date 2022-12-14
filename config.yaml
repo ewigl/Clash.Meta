@@ -206,21 +206,21 @@ rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
-  - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
+  - RULE-SET,private,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,DIRECT
-  - RULE-SET,proxy,🚀
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
-  - RULE-SET,telegramcidr,🚀
   - GEOIP,LAN,DIRECT
   - GEOIP,PRIVATE,DIRECT
   - GEOIP,CN,DIRECT
   # SteamCN,DIRECT
   - GEOSITE,steam@cn,DIRECT
+  - RULE-SET,proxy,🚀
+  - RULE-SET,telegramcidr,🚀
   - MATCH,🚀
 
 # 白名单模式，漏网之鱼直连
