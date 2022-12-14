@@ -200,20 +200,12 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
     path: ./ruleset/applications.yaml
     interval: 86400
-  steamCN:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
-    path: ./ruleset/steamCN.yaml
-    interval: 86400
 
 # 黑名单模式，漏网之鱼代理
 rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
-  # SteamCN,DIRECT
-  - RULE-SET,steamCN,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
   - RULE-SET,icloud,DIRECT
@@ -227,6 +219,8 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,PRIVATE,DIRECT
   - GEOIP,CN,DIRECT
+  # SteamCN,DIRECT
+  - GEOSITE,steam@cn,DIRECT
   - MATCH,🚀
 
 # 白名单模式，漏网之鱼直连
