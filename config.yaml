@@ -2,7 +2,7 @@ port: 7890
 socks-port: 7891
 mixed-port: 7888
 redir-port: 7891
-tproxy-port: 1536
+# tproxy-port: 1536
 mode: rule
 allow-lan: false
 geodata-mode: true
@@ -11,7 +11,12 @@ log-level: warning
 ipv6: false
 external-controller: localhost:9090
 external-ui: yacd
-enable-process: false
+# 监视进程名称
+enable-process: true
+
+tcp-concurrent: true
+#【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，
+# 并发所有IP，选择握手最快的IP进行连接
 
 profile:
   store-selected: true
@@ -91,17 +96,17 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 600
 
-  # iKuuu:
-  #   type: file
-  #   path: ./configs/iKuuu.yaml
-  #   health-check:
-  #     enable: true
-  #     url: http://www.gstatic.com/generate_204
-  #     interval: 600
-
   Others:
     type: file
     path: ./configs/Others.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 600
+
+  Test:
+    type: file
+    path: ./configs/Test.yaml
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -112,8 +117,8 @@ proxy-groups:
     type: select
     use:
       - Licht
-      # - iKuuu
       - Others
+      - Test
 
 rule-providers:
   reject:
