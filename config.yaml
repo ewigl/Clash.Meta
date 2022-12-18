@@ -94,7 +94,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 7200
 
   Licht_XL:
     type: file
@@ -102,7 +102,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 7200
 
   Others:
     type: file
@@ -110,7 +110,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 7200
 
   Test:
     type: file
@@ -118,7 +118,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 7200
 
 proxy-groups:
   - name: 🚀
